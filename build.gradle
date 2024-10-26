@@ -1,0 +1,31 @@
+plugins{
+    id 'java'
+    id 'application'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories{
+    mavenCentral()
+    google()
+}
+
+dependencies{
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.18.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.0'
+}
+
+application {
+    mainClass = 'com.example.Driver'
+}
+
+task runApp(type : JavaExec){
+    mainClass.set(application.mainClass)
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+test{
+    useJUnitPlatform()
+}
